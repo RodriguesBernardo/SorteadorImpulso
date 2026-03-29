@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Configurar Exceções</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-dark: #0f172a;
+        --card-dark: #1e293b;
+        --border-dark: #334155;
+        --accent: #ef4444;
+        --accent-hover: #dc2626;
+        --text-light: #f8fafc;
+        --text-muted: #94a3b8;
+      }
+      * {
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--bg-dark);
+        color: var(--text-light);
+        min-height: 100vh;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .voltar {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+        margin-bottom: 30px;
+        transition: color 0.2s;
+        align-self: flex-start;
+        max-width: 700px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .voltar:hover {
+        color: var(--text-light);
+      }
+
+      .container {
+        background: var(--card-dark);
+        padding: 40px;
+        border-radius: 20px;
+        border: 1px solid var(--border-dark);
+        width: 100%;
+        max-width: 700px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+      h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border-bottom: 1px solid var(--border-dark);
+        padding-bottom: 15px;
+      }
+
+      .form-section {
+        background: rgba(15, 23, 42, 0.5);
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        border: 1px solid var(--border-dark);
+      }
+      label.title {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 12px;
+        color: var(--text-muted);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      select {
+        width: 100%;
+        padding: 14px;
+        background: var(--bg-dark);
+        border: 1px solid var(--border-dark);
+        border-radius: 10px;
+        color: var(--text-light);
+        font-size: 15px;
+        outline: none;
+        cursor: pointer;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 16px;
+        transition: border-color 0.2s;
+      }
+      select:focus {
+        border-color: var(--text-muted);
+      }
+
+      .row-selects {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      @media (max-width: 480px) {
+        .row-selects {
+          flex-direction: column;
+          gap: 10px;
+        }
+        .row-selects span {
+          display: none;
+        }
+      }
+      .divisor {
+        color: var(--accent);
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      button.btn-salvar {
+        width: 100%;
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 14px;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.2s ease;
+      }
+      button.btn-salvar:hover {
+        background: var(--accent-hover);
+        transform: translateY(-1px);
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        background: var(--bg-dark);
+        padding: 16px 20px;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid var(--border-dark);
+        transition: transform 0.2s;
+      }
+      li:hover {
+        transform: translateX(5px);
+      }
+      li span {
+        font-size: 15px;
+      }
+      li strong {
+        color: var(--accent);
+      }
+
+      .btn-remover {
+        background: transparent;
+        color: var(--text-muted);
+        border: 1px solid var(--border-dark);
+        padding: 8px 12px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 13px;
+        transition: all 0.2s;
+      }
+      .btn-remover:hover {
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="voltar">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="19" y1="12" x2="5" y2="12"></line>
+        <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Voltar para o Sorteador
+    </a>
+
+    <div class="container">
+      <h1>Painel de Restrições</h1>
+
+      <div class="form-section">
+        <label class="title">1. Selecione a Turma</label>
+        <select
+          id="turma-admin"
+          onchange="carregarSelectsAlunos(); atualizarTela();"
+        ></select>
+      </div>
+
+      <div class="form-section">
+        <label class="title">2. Crie a regra (Quem não faz com quem)</label>
+        <div class="row-selects">
+          <select id="aluno1"></select>
+          <span class="divisor">✕</span>
+          <select id="aluno2"></select>
+        </div>
+        <button class="btn-salvar" onclick="adicionarExcecao()">
+          Salvar Restrição
+        </button>
+      </div>
+
+      <label class="title" style="margin-top: 40px"
+        >Regras Ativas desta Turma</label
+      >
+      <ul id="lista-excecoes"></ul>
+    </div>
+
+    <script src="dados.js"></script>
+    <script>
+      let excecoes = JSON.parse(localStorage.getItem("excecoesSorteio")) || [];
+      const seletorTurma = document.getElementById("turma-admin");
+      const selectAluno1 = document.getElementById("aluno1");
+      const selectAluno2 = document.getElementById("aluno2");
+
+      window.onload = () => {
+        for (let nomeTurma in turmas) {
+          const option = document.createElement("option");
+          option.value = nomeTurma;
+          option.textContent = nomeTurma;
+          seletorTurma.appendChild(option);
+        }
+        carregarSelectsAlunos();
+        atualizarTela();
+      };
+
+      function carregarSelectsAlunos() {
+        const turmaAtual = seletorTurma.value;
+        const alunos = turmas[turmaAtual] || [];
+
+        selectAluno1.innerHTML = "";
+        selectAluno2.innerHTML = "";
+
+        alunos.forEach((aluno) => {
+          selectAluno1.innerHTML += `<option value="${aluno}">${aluno}</option>`;
+          selectAluno2.innerHTML += `<option value="${aluno}">${aluno}</option>`;
+        });
+
+        if (alunos.length > 1) {
+          selectAluno2.selectedIndex = 1;
+        }
+      }
+
+      function atualizarTela() {
+        const ul = document.getElementById("lista-excecoes");
+        ul.innerHTML = "";
+
+        const turmaAtual = seletorTurma.value;
+        const alunosDaTurma = turmas[turmaAtual] || [];
+        let temRegraNaTurma = false;
+
+        excecoes.forEach((par, originalIndex) => {
+          if (
+            alunosDaTurma.includes(par[0]) ||
+            alunosDaTurma.includes(par[1])
+          ) {
+            temRegraNaTurma = true;
+            const li = document.createElement("li");
+            li.innerHTML = `<span><strong>${par[0]}</strong> não faz com <strong>${par[1]}</strong></span> 
+                                <button class="btn-remover" onclick="removerExcecao(${originalIndex})">Remover</button>`;
+            ul.appendChild(li);
+          }
+        });
+
+        if (!temRegraNaTurma) {
+          ul.innerHTML =
+            '<li style="justify-content:center; color: #94a3b8; border-style: dashed;">Nenhuma restrição cadastrada para esta turma</li>';
+        }
+
+        localStorage.setItem("excecoesSorteio", JSON.stringify(excecoes));
+      }
+
+      function adicionarExcecao() {
+        const a = selectAluno1.value;
+        const b = selectAluno2.value;
+
+        if (a === b) {
+          alert("Selecione alunos diferentes para criar uma exceção!");
+          return;
+        }
+
+        const jaExiste = excecoes.some(
+          (par) =>
+            (par[0] === a && par[1] === b) || (par[0] === b && par[1] === a)
+        );
+
+        if (jaExiste) {
+          alert("Essa regra já existe!");
+          return;
+        }
+
+        excecoes.push([a, b]);
+        atualizarTela();
+      }
+
+      function removerExcecao(index) {
+        excecoes.splice(index, 1);
+        atualizarTela();
+      }
+    </script>
+  </body>
+</html>
