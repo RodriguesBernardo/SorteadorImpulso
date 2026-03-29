@@ -1,5 +1,5 @@
 const turmas = {
-  "61": [
+  "Turma 61": [
     "Alicia Azeredo Favero",
     "Arthur da Silva Jeronimo",
     "Arthur Gohan Chaves Henrique",
@@ -25,7 +25,7 @@ const turmas = {
     "Maria Rita Bordignon Pastore",
     "Otavio Thies"
   ],
-  "62": [
+  "Turma 61": [
     "Amanda Souza Lopes",
     "Analu dos Santos Cavalheiro",
     "Angelo Fontanella Wons",
